@@ -4,12 +4,12 @@ public class Village {
 	private String nom;
 	private Chef chef;
 	private int nbvillageois = 0;
-	private int nbVillageoisMaximum;
-	private Gaulois villageois[] = new Gaulois[nbVillageoisMaximum];
+
+	private Gaulois villageois[];
 
 	public Village(String nom, int nbVillageoisMaximum) {
 		this.nom = nom;
-		this.nbVillageoisMaximum = nbVillageoisMaximum;
+		villageois = new Gaulois[nbVillageoisMaximum];
 	}
 
 	public void setChef(Chef chef) {
@@ -21,15 +21,21 @@ public class Village {
 	}
 
 	public void ajouteHabitant(Gaulois gaulois) {
-		if (nbvillageois < nbVillageoisMaximum) {
-			villageois[nbvillageois] = gaulois;
-			nbvillageois++;
-		}
+		villageois[nbvillageois] = gaulois;
+		nbvillageois++;
 
 	}
 
 	public Gaulois trouverHabitant(int nvillageois) {
 		return villageois[nvillageois];
+	}
+
+	public void afficherVillageois() {
+		System.out.println("Dans le village du chef" + chef.getNom() + "vivent les legendaires gaulois:");
+		for (int i = 0; i < nbvillageois; i++) {
+			System.out.println("-" + villageois[i].getNom());
+		}
+
 	}
 
 	public static void main(String[] args) {
@@ -43,8 +49,13 @@ public class Village {
 		village.setChef(Abraracourcix);
 		Gaulois Asterix = new Gaulois("Asterix", 8);
 		village.ajouteHabitant(Asterix);
-		Gaulois gaulois = village.trouverHabitant(1);
-		System.out.println(gaulois);
+		Gaulois Obelix = new Gaulois("Obelix", 25);
+		village.ajouteHabitant(Obelix);
+//		Gaulois gaulois = village.trouverHabitant(1);
+//		System.out.println(gaulois);
+//		null
+//		Le tableau est vide en 1
+		village.afficherVillageois();
 
 	}
 }
