@@ -83,44 +83,44 @@ public class Romain {
 
 	private Equipement[] ejecterEquipement() {
 		Equipement[] equipementEjecte = new Equipement[nbEquipement];
-		System.out.println("L'équipement de " + nom.toString() + "
-		s'envole sous la force du coup.");
-		//TODO
+		System.out.println("L'équipement de " + nom.toString() + "s'envole sous la force du coup.");
+		// TODO
 		int nbEquipementEjecte = 0;
 		for (int i = 0; i < nbEquipement; i++) {
 			if (equipements[i] == null) {
 				continue;
-				} else {
-				equipementEjecte[nbEquipementEjecte] =
-				equipements[i];
+			} else {
+				equipementEjecte[nbEquipementEjecte] = equipements[i];
 				nbEquipementEjecte++;
 				equipements[i] = null;
-				}
-				}
-				return equipementEjecte;
-				}
+			}
+		}
+		return equipementEjecte;
+	}
 
 	public void sEquiper(Equipement equipement) {
 		switch (nbEquipement) {
 		case 0:
-			this.equipements[nbEquipement] = equipement;
-			nbEquipement++;
-			System.out.println("Le soldat " + nom + " s’équipe avec un " + equipement);
+			ajouterEquipement(equipement);
 			break;
 
 		case 1:
 			if (this.equipements[0] == equipement) {
 				System.out.println("Le soldat " + nom + " possède déjà un " + equipement + "!");
 			} else {
-				this.equipements[nbEquipement] = equipement;
-				nbEquipement++;
-				System.out.println("Le soldat " + nom + " s’équipe avec un " + equipement);
+				ajouterEquipement(equipement);
 			}
 			break;
 		case 2:
 			System.out.println("Le soldat " + nom + " est déjà bien protégé !");
 			break;
 		}
+	}
+
+	private void ajouterEquipement(Equipement equipement) {
+		this.equipements[nbEquipement] = equipement;
+		nbEquipement++;
+		System.out.println("Le soldat " + nom + " s’équipe avec un " + equipement);
 	}
 
 	public static void main(String[] args) {
