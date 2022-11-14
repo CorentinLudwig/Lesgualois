@@ -3,8 +3,9 @@ package personnages;
 public class Gaulois {
 	private String nom;
 	private int effetPotion = 1;
-	private int force, nb_trophees;
-	private Equipement trophees[] = new Equipement[100];
+	private int force;
+	private int nb_trophees;
+	private Equipement[] trophees = new Equipement[100];
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -16,7 +17,7 @@ public class Gaulois {
 	}
 
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + "»");
+		System.out.println(prendreParole() + "ï¿½ " + texte + "ï¿½");
 	}
 
 //	private String prendreParole() {
@@ -24,25 +25,28 @@ public class Gaulois {
 //	}
 	
 	private String prendreParole() {
-		String texte = "Le gaulois " + nom + " : ";
-		return texte;
+		return "Le gaulois " + nom + " : ";
 		}
 
 
 //	public void frapper(Romain romain) {
-//		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-//		romain.recevoirCoup(force / 3);
+//		System.out.println(nom + " envoie un grand coup dans la mï¿½choire de " + romain.getNom());
+//		romain.recevoirCoup((force*effetPotion / 3);
 //	}
 	
+	public void boirePotion(int forcePotion) {
+		effetPotion = forcePotion;
+		parler("Â« Merci Druide, je sens que ma force est " + forcePotion +" fois dÃ©cuplÃ©e");
+	}
+	
 	public void frapper(Romain romain) {
-		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-		Equipement trophees[] = romain.recevoirCoup((force / 3) *
+		System.out.println(nom + " envoie un grand coup dans la mï¿½choire de " + romain.getNom());
+		Equipement[] trophees2 = romain.recevoirCoup((force / 3) *
 		effetPotion);
-		for (int i = 0; trophees != null && i < trophees.length; i++,
+		for (int i = 0; trophees != null && i < trophees2.length; i++,
 		nb_trophees++) {
 		this.trophees[nb_trophees] = trophees[i];
 		}
-		return;
 		}
 
 
@@ -52,7 +56,7 @@ public class Gaulois {
 	}
 
 	public static void main(String[] args) {
-		// TODO créer un main permettant de tester la classe Gaulois
+		// TODO crï¿½er un main permettant de tester la classe Gaulois
 	}
 
 }
